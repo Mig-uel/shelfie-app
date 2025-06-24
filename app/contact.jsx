@@ -1,5 +1,6 @@
 import { Link } from 'expo-router'
 import { StyleSheet, Text } from 'react-native'
+import ThemedView from '../components/ThemedView'
 
 export default function Contact() {
   return (
