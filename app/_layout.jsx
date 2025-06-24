@@ -6,6 +6,10 @@ export default function RootLayout() {
 
   /* Stack component from Expo automatically manages navigation */
   return (
+    /**
+     * The Stack component from Expo Router manages navigation between screens
+     * in the app, handling transitions and navigation history automatically.
+     */
     <Stack
       screenOptions={{
         headerStyle: {
@@ -33,8 +37,3 @@ export default function RootLayout() {
 }
 
 const styles = StyleSheet.create({})
-
-/**
- * The Stack component from Expo Router manages navigation between screens
- * in the app, handling transitions and navigation history automatically.
- */
