@@ -1,6 +1,9 @@
 import { Link } from 'expo-router'
-import { Image, StyleSheet, Text, View } from 'react-native'
+import { Image, StyleSheet, Text } from 'react-native'
 import Logo from '../assets/img/logo_light.png'
+
+// Themed components
+import ThemedView from '../components/ThemedView'
 
 export default function Home() {
   return (
@@ -10,7 +13,7 @@ export default function Home() {
      * and can help with content structure and layout
      * View component will often be used a root component
      */
-    <View style={styles.container}>
+    <ThemedView style={styles.container}>
       {/* We can either import the image as a module or set the uri */}
       <Image
         source={Logo}
@@ -51,7 +54,7 @@ export default function Home() {
       >
         Contact Page
       </Link>
-    </View>
+    </ThemedView>
   )
 }
 
