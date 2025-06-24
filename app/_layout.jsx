@@ -1,4 +1,5 @@
 import { Stack } from 'expo-router'
+import { StatusBar } from 'expo-status-bar'
 import { StyleSheet, useColorScheme } from 'react-native'
 import { Colors } from '../constants/colors'
 
@@ -12,29 +13,33 @@ export default function RootLayout() {
      * The Stack component from Expo Router manages navigation between screens
      * in the app, handling transitions and navigation history automatically.
      */
-    <Stack
-      screenOptions={{
-        headerStyle: {
-          backgroundColor: theme.navBackground,
-        },
-        headerTintColor: theme.title,
-      }}
-    >
-      <Stack.Screen
-        name='index'
-        options={{
-          title: 'Home',
+    <>
+      <StatusBar />
+
+      <Stack
+        screenOptions={{
+          headerStyle: {
+            backgroundColor: theme.navBackground,
+          },
+          headerTintColor: theme.title,
         }}
-      />
-      <Stack.Screen
-        name='about'
-        options={{ title: 'About' }}
-      />
-      <Stack.Screen
-        name='contact'
-        options={{ title: 'Contact' }}
-      />
-    </Stack>
+      >
+        <Stack.Screen
+          name='index'
+          options={{
+            title: 'Home',
+          }}
+        />
+        <Stack.Screen
+          name='about'
+          options={{ title: 'About' }}
+        />
+        <Stack.Screen
+          name='contact'
+          options={{ title: 'Contact' }}
+        />
+      </Stack>
+    </>
   )
 }
 
