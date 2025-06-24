@@ -31,12 +31,12 @@ export default function RootLayout() {
           }}
         />
         <Stack.Screen
-          name='about'
-          options={{ title: 'About' }}
+          name='login'
+          options={{ title: 'Login' }}
         />
         <Stack.Screen
-          name='contact'
-          options={{ title: 'Contact' }}
+          name='register'
+          options={{ title: 'Register' }}
         />
       </Stack>
     </>

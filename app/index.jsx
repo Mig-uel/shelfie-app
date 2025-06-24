@@ -33,16 +33,16 @@ export default function Home() {
       <Spacer />
 
       <Link
-        href={'/about'}
+        href={'/login'}
         style={styles.link}
       >
-        <ThemedText>About Page</ThemedText>
+        <ThemedText>Login Page</ThemedText>
       </Link>
       <Link
-        href={'/contact'}
+        href={'/register'}
         style={styles.link}
       >
-        <ThemedText>Contact Page</ThemedText>
+        <ThemedText>Register Page</ThemedText>
       </Link>
     </ThemedView>
   )
