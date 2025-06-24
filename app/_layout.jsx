@@ -1,8 +1,10 @@
 import { Stack } from 'expo-router'
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, useColorScheme } from 'react-native'
+import { Colors } from '../constants/colors'
 
 export default function RootLayout() {
-  /* <Slot />: Renders a page content */
+  const colorScheme = useColorScheme()
+  const theme = Colors[colorScheme] ?? Colors.light
 
   /* Stack component from Expo automatically manages navigation */
   return (
@@ -13,9 +15,9 @@ export default function RootLayout() {
     <Stack
       screenOptions={{
         headerStyle: {
-          backgroundColor: '#ddd',
+          backgroundColor: theme.navBackground,
         },
-        headerTintColor: '#333',
+        headerTintColor: theme.title,
       }}
     >
       <Stack.Screen
@@ -37,3 +39,5 @@ export default function RootLayout() {
 }
 
 const styles = StyleSheet.create({})
+
+/* <Slot />: Renders a page content */
