@@ -1,0 +1,4 @@
+export const config = {
+  APPWRITE_ID: process.env.EXPO_PUBLIC_APPWRITE_PROJECT_ID,
+  APPWRITE_ENDPOINT: process.env.EXPO_PUBLIC_APPWRITE_ENDPOINT,
+}
