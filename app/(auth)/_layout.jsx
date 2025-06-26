@@ -1,22 +1,14 @@
 import { Stack } from 'expo-router'
 import { StatusBar } from 'expo-status-bar'
-import { StyleSheet, useColorScheme } from 'react-native'
-import { Colors } from '../../constants/colors'
+import { StyleSheet } from 'react-native'
 
-export default function RootLayout() {
-  const colorScheme = useColorScheme()
-  const theme = Colors[colorScheme] ?? Colors.light
-
+export default function AuthLayout() {
   return (
     <>
       <StatusBar />
 
       <Stack
         screenOptions={{
-          headerStyle: {
-            backgroundColor: theme.navBackground,
-          },
-          headerTintColor: theme.title,
           headerShown: false,
           animation: 'none',
         }}
