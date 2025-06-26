@@ -32,7 +32,7 @@ export default function ({ children }) {
       await account.create(ID.unique(), email, password)
 
       // Manually login user after creating account
-      await login(email, password)
+      await login({ email, password })
     } catch (error) {
       console.log(error)
     }
