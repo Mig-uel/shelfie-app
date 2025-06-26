@@ -1,11 +1,16 @@
 import { Link } from 'expo-router'
+import { useState } from 'react'
 import { StyleSheet, Text } from 'react-native'
 import Spacer from '../../components/Spacer'
 import ThemedButton from '../../components/ThemedButton'
 import ThemedText from '../../components/ThemedText'
+import ThemedTextInput from '../../components/ThemedTextInput'
 import ThemedView from '../../components/ThemedView'
 
 export default function Register() {
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+
   const handlePress = () => {
     console.log('register form submitted')
   }
@@ -18,18 +23,37 @@ export default function Register() {
         title
         style={styles.title}
       >
-        Register an account
+        Register
       </ThemedText>
+
+      <ThemedTextInput
+        keyboardType='email-address'
+        onChangeText={setEmail}
+        placeholder='Email'
+        style={{ width: '80%' }}
+        value={email}
+      />
+      <Spacer height={20} />
+      <ThemedTextInput
+        onChangeText={setPassword}
+        placeholder='Password'
+        secureTextEntry
+        style={{ width: '80%' }}
+        value={password}
+      />
+
+      <Spacer height={20} />
 
       <ThemedButton onPress={handlePress}>
         <Text style={{ color: '#f2f2f2' }}>Register</Text>
       </ThemedButton>
 
-      <Spacer height={100} />
+      <Spacer />
 
       <Link
         href={'/login'}
         style={{ textAlign: 'center' }}
+        push
       >
         <ThemedText>Already have an account? Login</ThemedText>
       </Link>
@@ -47,5 +71,6 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 18,
     marginBottom: 30,
+    fontWeight: 'bold',
   },
 })
