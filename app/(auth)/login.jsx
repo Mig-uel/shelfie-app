@@ -12,13 +12,21 @@ import ThemedText from '../../components/ThemedText'
 import ThemedTextInput from '../../components/ThemedTextInput'
 import ThemedView from '../../components/ThemedView'
 import { Colors } from '../../constants/colors'
+import { useUserContext } from '../../context/UserContext'
 
 export default function Login() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
-  const handlePress = () => {
-    console.log('login form submitted')
+  const { login, user } = useUserContext()
+
+  const handlePress = async () => {
+    try {
+      await login({ user, password })
+      console.log(user)
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   return (
