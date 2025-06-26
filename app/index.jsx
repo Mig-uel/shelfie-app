@@ -44,6 +44,12 @@ export default function Home() {
       >
         <ThemedText>Register Page</ThemedText>
       </Link>
+      <Link
+        href={'/profile'}
+        style={styles.link}
+      >
+        <ThemedText>Books Page</ThemedText>
+      </Link>
     </ThemedView>
   )
 }
