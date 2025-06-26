@@ -44,7 +44,7 @@ export default function ThemedView({
       style={[
         {
           backgroundColor: theme.background,
-          paddingTop: insets.top,
+          paddingTop: insets.top - 20,
           paddingBottom: insets.bottom,
         },
         style,
