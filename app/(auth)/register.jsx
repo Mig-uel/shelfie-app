@@ -11,13 +11,20 @@ import ThemedButton from '../../components/ThemedButton'
 import ThemedText from '../../components/ThemedText'
 import ThemedTextInput from '../../components/ThemedTextInput'
 import ThemedView from '../../components/ThemedView'
+import { useUserContext } from '../../context/UserContext'
 
 export default function Register() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const { register, user } = useUserContext()
 
-  const handlePress = () => {
-    console.log('register form submitted')
+  const handlePress = async () => {
+    try {
+      await register({ email, password })
+      console.log(user)
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   return (
