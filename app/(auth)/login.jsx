@@ -1,6 +1,11 @@
 import { Link } from 'expo-router'
 import { useState } from 'react'
-import { StyleSheet, Text } from 'react-native'
+import {
+  Keyboard,
+  StyleSheet,
+  Text,
+  TouchableWithoutFeedback,
+} from 'react-native'
 import Spacer from '../../components/Spacer'
 import ThemedButton from '../../components/ThemedButton'
 import ThemedText from '../../components/ThemedText'
@@ -17,48 +22,50 @@ export default function Login() {
   }
 
   return (
-    <ThemedView style={styles.container}>
-      <Spacer />
+    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+      <ThemedView style={styles.container}>
+        <Spacer />
 
-      <ThemedText
-        style={styles.title}
-        title
-      >
-        Login
-      </ThemedText>
+        <ThemedText
+          style={styles.title}
+          title
+        >
+          Login
+        </ThemedText>
 
-      <ThemedTextInput
-        keyboardType='email-address'
-        onChangeText={setEmail}
-        placeholder='Email'
-        style={{ width: '80%' }}
-        value={email}
-      />
-      <Spacer height={20} />
-      <ThemedTextInput
-        onChangeText={setPassword}
-        placeholder='Password'
-        secureTextEntry
-        style={{ width: '80%' }}
-        value={password}
-      />
+        <ThemedTextInput
+          keyboardType='email-address'
+          onChangeText={setEmail}
+          placeholder='Email'
+          style={{ width: '80%' }}
+          value={email}
+        />
+        <Spacer height={20} />
+        <ThemedTextInput
+          onChangeText={setPassword}
+          placeholder='Password'
+          secureTextEntry
+          style={{ width: '80%' }}
+          value={password}
+        />
 
-      <Spacer height={20} />
+        <Spacer height={20} />
 
-      <ThemedButton onPress={handlePress}>
-        <Text style={{ color: '#f2f2f2' }}>Login</Text>
-      </ThemedButton>
+        <ThemedButton onPress={handlePress}>
+          <Text style={{ color: '#f2f2f2' }}>Login</Text>
+        </ThemedButton>
 
-      <Spacer />
+        <Spacer />
 
-      <Link
-        href={'/register'}
-        style={{ textAlign: 'center' }}
-        push
-      >
-        <ThemedText>Don't have an account? Register</ThemedText>
-      </Link>
-    </ThemedView>
+        <Link
+          href={'/register'}
+          style={{ textAlign: 'center' }}
+          push
+        >
+          <ThemedText>Don't have an account? Register</ThemedText>
+        </Link>
+      </ThemedView>
+    </TouchableWithoutFeedback>
   )
 }
 
