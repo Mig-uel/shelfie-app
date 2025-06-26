@@ -12,6 +12,7 @@ export default function ({ children }) {
   async function logout({ email, password }) {}
 
   const value = {
+    user,
     login,
     register,
     logout,
