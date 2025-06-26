@@ -2,6 +2,7 @@ import { Stack } from 'expo-router'
 import { StatusBar } from 'expo-status-bar'
 import { StyleSheet, useColorScheme } from 'react-native'
 import { Colors } from '../constants/colors'
+import UserProvider from '../context/UserContext'
 
 export default function RootLayout() {
   const colorScheme = useColorScheme()
@@ -13,7 +14,7 @@ export default function RootLayout() {
      * The Stack component from Expo Router manages navigation between screens
      * in the app, handling transitions and navigation history automatically.
      */
-    <>
+    <UserProvider>
       <StatusBar />
 
       <Stack
@@ -45,7 +46,7 @@ export default function RootLayout() {
           }}
         />
       </Stack>
-    </>
+    </UserProvider>
   )
 }
 
