@@ -19,7 +19,7 @@ export default function ({ children }) {
 
       setUser(response)
     } catch (error) {
-      console.log(error)
+      throw Error(error.message)
     }
   }
 
@@ -34,7 +34,7 @@ export default function ({ children }) {
       // Manually login user after creating account
       await login({ email, password })
     } catch (error) {
-      console.log(error)
+      throw Error(error.message)
     }
   }
 
