@@ -13,7 +13,7 @@ export default function GuestOnly({ children }) {
     }
   }, [authChecked, user])
 
-  if (!authChecked || !user) return <ThemedLoader />
+  if (!authChecked || user) return <ThemedLoader />
 
   return children
 }
