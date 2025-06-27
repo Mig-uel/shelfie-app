@@ -11,19 +11,22 @@ import ThemedButton from '../../components/ThemedButton'
 import ThemedText from '../../components/ThemedText'
 import ThemedTextInput from '../../components/ThemedTextInput'
 import ThemedView from '../../components/ThemedView'
+import { Colors } from '../../constants/colors'
 import { useUserContext } from '../../context/UserContext'
 
 export default function Register() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [error, setError] = useState(null)
   const { register, user } = useUserContext()
 
   const handlePress = async () => {
+    setError(null)
+
     try {
       await register({ email, password })
-      console.log(user)
     } catch (error) {
-      console.log(error)
+      setError(error.message)
     }
   }
 
@@ -57,6 +60,10 @@ export default function Register() {
 
         <Spacer height={20} />
 
+        {error ? <Text style={styles.error}>{error}</Text> : null}
+
+        <Spacer height={20} />
+
         <ThemedButton onPress={handlePress}>
           <Text style={{ color: '#f2f2f2' }}>Register</Text>
         </ThemedButton>
@@ -86,5 +93,14 @@ const styles = StyleSheet.create({
     fontSize: 18,
     marginBottom: 30,
     fontWeight: 'bold',
+  },
+  error: {
+    color: Colors.warning,
+    padding: 10,
+    backgroundColor: '#F4C1C8',
+    borderColor: Colors.warning,
+    borderWidth: 1,
+    borderRadius: 6,
+    marginHorizontal: 10,
   },
 })

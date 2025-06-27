@@ -17,15 +17,17 @@ import { useUserContext } from '../../context/UserContext'
 export default function Login() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [error, setError] = useState(null)
 
   const { login, user } = useUserContext()
 
   const handlePress = async () => {
+    setError(null)
+
     try {
       await login({ user, password })
-      console.log(user)
     } catch (error) {
-      console.log(error)
+      setError(error.message)
     }
   }
 
@@ -56,6 +58,10 @@ export default function Login() {
           style={{ width: '80%' }}
           value={password}
         />
+
+        <Spacer height={20} />
+
+        {error ? <Text style={styles.error}>{error}</Text> : null}
 
         <Spacer height={20} />
 
@@ -96,5 +102,14 @@ const styles = StyleSheet.create({
   },
   pressed: {
     opacity: 0.8,
+  },
+  error: {
+    color: Colors.warning,
+    padding: 10,
+    backgroundColor: '#F4C1C8',
+    borderColor: Colors.warning,
+    borderWidth: 1,
+    borderRadius: 6,
+    marginHorizontal: 10,
   },
 })
