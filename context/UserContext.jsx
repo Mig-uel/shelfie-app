@@ -38,7 +38,10 @@ export default function ({ children }) {
     }
   }
 
-  async function logout({ email, password }) {}
+  async function logout({ email, password }) {
+    await account.deleteSession('current')
+    setUser(null)
+  }
 
   const value = {
     user,
