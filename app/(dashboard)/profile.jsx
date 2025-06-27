@@ -6,9 +6,7 @@ import ThemedView from '../../components/ThemedView'
 import { useUserContext } from '../../context/UserContext'
 
 export default function Profile() {
-  const { logout } = useUserContext()
-
-  const handleLogout = () => logout()
+  const { logout, user } = useUserContext()
 
   return (
     <ThemedView
@@ -32,7 +30,9 @@ export default function Profile() {
           flex: 1,
         }}
       >
-        <ThemedText>Time to start reading some books...</ThemedText>
+        <ThemedText style={{ fontWeight: 'bold', fontSize: 18 }}>
+          {user?.email || 'Not signed in'}
+        </ThemedText>
 
         <Spacer />
 
