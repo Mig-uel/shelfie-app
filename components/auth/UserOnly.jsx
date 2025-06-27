@@ -1,7 +1,7 @@
 import { useRouter } from 'expo-router'
 import { useEffect } from 'react'
-import { Text } from 'react-native'
 import { useUserContext } from '../../context/UserContext'
+import ThemedLoader from '../ThemedLoader'
 
 export default function UserOnly({ children }) {
   const router = useRouter()
@@ -13,7 +13,7 @@ export default function UserOnly({ children }) {
     }
   }, [authChecked, user])
 
-  if (!authChecked || !user) return <Text>Loading...</Text>
+  if (!authChecked || !user) return <ThemedLoader />
 
   return children
 }
