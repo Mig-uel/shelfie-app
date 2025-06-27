@@ -9,7 +9,7 @@ export default function Books() {
       style={styles.container}
       safe
     >
-      <Spacer />
+      <Spacer height={10} />
 
       <ThemedText
         title
