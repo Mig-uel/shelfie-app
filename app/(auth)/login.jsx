@@ -11,6 +11,7 @@ import ThemedButton from '../../components/ThemedButton'
 import ThemedText from '../../components/ThemedText'
 import ThemedTextInput from '../../components/ThemedTextInput'
 import ThemedView from '../../components/ThemedView'
+
 import { Colors } from '../../constants/colors'
 import { useUserContext } from '../../context/UserContext'
 
@@ -19,7 +20,7 @@ export default function Login() {
   const [password, setPassword] = useState('')
   const [error, setError] = useState(null)
 
-  const { login, user } = useUserContext()
+  const { login } = useUserContext()
 
   const handlePress = async () => {
     setError(null)
