@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from 'react'
+import { createContext, useContext, useEffect, useState } from 'react'
 import { ID, Permission, Query, Role } from 'react-native-appwrite'
 import { config } from '../config'
 import { database } from '../lib/appwrite'
@@ -67,6 +67,14 @@ function BooksProvider({ children }) {
   async function deleteBook(id) {}
 
   const value = { books, createBook, deleteBook, fetchBooks, fetchBookById }
+
+  useEffect(() => {
+    if (user) {
+      fetchBooks()
+    } else {
+      setBooks([])
+    }
+  }, [user])
 
   return <BooksContext.Provider value={value}>{children}</BooksContext.Provider>
 }
