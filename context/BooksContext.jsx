@@ -36,8 +36,8 @@ function BooksProvider({ children }) {
    */
   async function createBook(data) {
     try {
-      const book = await database.createDocument(
-        config.APPWRITE_ID,
+      await database.createDocument(
+        config.APPWRITE_DB_ID,
         config.APPWRITE_DB_COLLECTION_ID,
         ID.unique(),
         { ...data, userId: user.$id },
