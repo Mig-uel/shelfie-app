@@ -1,5 +1,5 @@
 import { createContext, useContext, useState } from 'react'
-import { ID, Permission, Role } from 'react-native-appwrite'
+import { ID, Permission, Query, Role } from 'react-native-appwrite'
 import { config } from '../config'
 import { database } from '../lib/appwrite'
 import { useUserContext } from './UserContext'
@@ -14,6 +14,14 @@ function BooksProvider({ children }) {
    */
   async function fetchBooks() {
     try {
+      const response = await database.listDocuments(
+        config.APPWRITE_DB_ID,
+        config.APPWRITE_DB_COLLECTION_ID,
+        [Query.equal('userId', user.$id)]
+      )
+
+      setBooks(response.documents)
+      console.log(response.documents)
     } catch (error) {
       console.log(error.message)
     }
