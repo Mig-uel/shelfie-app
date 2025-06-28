@@ -24,8 +24,8 @@ export default function ThemedView({
             backgroundColor: theme.background,
           },
           style,
-          { ...props },
         ]}
+        {...props}
       >
         {children}
       </View>
@@ -48,8 +48,8 @@ export default function ThemedView({
           paddingBottom: insets.bottom,
         },
         style,
-        { ...props },
       ]}
+      {...props}
     >
       {children}
     </View>
