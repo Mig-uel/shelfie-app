@@ -97,6 +97,10 @@ function BooksProvider({ children }) {
         if (events[0].includes('create')) {
           setBooks((prev) => [...prev, payload])
         }
+
+        if (events[0].includes('delete')) {
+          setBooks((prev) => prev.filter((b) => b.$id !== payload.$id))
+        }
       })
     } else {
       setBooks([])
