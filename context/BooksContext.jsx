@@ -71,7 +71,15 @@ function BooksProvider({ children }) {
    * Function to delete a book
    * @param {string} id
    */
-  async function deleteBook(id) {}
+  async function deleteBook(id) {
+    try {
+      await database.deleteDocument(
+        config.APPWRITE_DB_ID,
+        config.APPWRITE_DB_ID,
+        id
+      )
+    } catch (error) {}
+  }
 
   const value = { books, createBook, deleteBook, fetchBooks, fetchBookById }
 
