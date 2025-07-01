@@ -1,17 +1,20 @@
-import { StyleSheet } from 'react-native'
+import { useLocalSearchParams, useRouter } from 'expo-router'
+import { useEffect, useState } from 'react'
+import { StyleSheet, Text } from 'react-native'
+import Spacer from '../../../components/Spacer'
+import ThemedButton from '../../../components/ThemedButton'
+import ThemedCard from '../../../components/ThemedCard'
+import ThemedLoader from '../../../components/ThemedLoader'
 import ThemedText from '../../../components/ThemedText'
 import ThemedView from '../../../components/ThemedView'
-import { useLocalSearchParams } from 'expo-router'
-import { useEffect, useState } from 'react'
+import { Colors } from '../../../constants/colors'
 import { useBooksContext } from '../../../context/BooksContext'
-import Spacer from '../../../components/Spacer'
-import ThemedLoader from '../../../components/ThemedLoader'
-import ThemedCard from '../../../components/ThemedCard'
 
 export default function BookDetails() {
   const { id } = useLocalSearchParams()
   const [book, setBook] = useState(null)
-  const { fetchBookById } = useBooksContext()
+  const { deleteBook, fetchBookById } = useBooksContext()
+  const router = useRouter()
 
   useEffect(() => {
     async function loadBook() {
@@ -34,6 +37,12 @@ export default function BookDetails() {
     )
   }
 
+  const handleDelete = async () => {
+    await deleteBook(id)
+    setBook(null)
+    router.replace('/books')
+  }
+
   return (
     <ThemedView
       safe
@@ -50,6 +59,13 @@ export default function BookDetails() {
 
         <ThemedText>{book.description}</ThemedText>
       </ThemedCard>
+
+      <ThemedButton
+        style={styles.delete}
+        onPress={handleDelete}
+      >
+        <Text style={{ textAlign: 'center', color: '#FFF' }}>Delete Book</Text>
+      </ThemedButton>
     </ThemedView>
   )
 }
@@ -65,5 +81,11 @@ const styles = StyleSheet.create({
   },
   card: {
     margin: 20,
+  },
+  delete: {
+    marginTop: 40,
+    backgroundColor: Colors.warning,
+    width: 200,
+    alignSelf: 'center',
   },
 })
