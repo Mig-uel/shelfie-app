@@ -33,6 +33,13 @@ function BooksProvider({ children }) {
    */
   async function fetchBookById(id) {
     try {
+      const response = await database.getDocument(
+        config.APPWRITE_DB_ID,
+        config.APPWRITE_DB_COLLECTION_ID,
+        id
+      )
+
+      return response
     } catch (error) {
       console.log(error.message)
     }
